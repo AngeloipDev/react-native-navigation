@@ -1,8 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { COLORS } from "../../constants/colors";
 
-const Settings = () => {
+const SettingsDetail = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView
       style={{
@@ -13,14 +15,18 @@ const Settings = () => {
       }}
     >
       <Text>Settings Detail</Text>
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={styles.button}
+        activeOpacity={0.8}
+      >
         <Text style={styles.buttonText}>Go Back</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
-export default Settings;
+export default SettingsDetail;
 
 const styles = StyleSheet.create({
   button: {

@@ -5,6 +5,7 @@ import Register from "../screens/auth/Register";
 import { ROUTES } from "../constants/routes";
 import { COLORS } from "../constants/colors";
 import BottomTabNavigator from "./BottomTabNavigator";
+import DrawerNavigator from "./DrawerNavigator";
 
 const Stack = createStackNavigator();
 
@@ -17,12 +18,16 @@ export default function AuthNavigator() {
         headerTintColor: COLORS.white
       }}
     >
-      <Stack.Screen name={ROUTES.LOGIN} component={Login} />
+      <Stack.Screen
+        name={ROUTES.LOGIN}
+        component={Login}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} />
       <Stack.Screen name={ROUTES.REGISTER} component={Register} />
       <Stack.Screen
         name={ROUTES.HOME}
-        component={BottomTabNavigator}
+        component={DrawerNavigator}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

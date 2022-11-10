@@ -8,6 +8,7 @@ import Wallet from "../screens/home/Wallet";
 import { ROUTES } from "../constants/routes";
 import { COLORS } from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
+import SettingsNavigator from "./SettingsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ function BottomTabNavigator() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerTitleAlign: "center",
+        headerShown: false,
         tabBarActiveTintColor: COLORS.primary,
         tabBarIcon: ({ color, size, focused }) => {
           let iconName;
@@ -23,7 +25,7 @@ function BottomTabNavigator() {
           if (route.name === ROUTES.HOME_TAB) {
             Icon = Ionicons;
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === ROUTES.SETTINGS) {
+          } else if (route.name === ROUTES.SETTINGS_NAVIGATOR) {
             Icon = Ionicons;
             iconName = focused ? "settings" : "settings-outline";
           } else if (route.name === ROUTES.WALLET) {
@@ -47,7 +49,11 @@ function BottomTabNavigator() {
         component={Notifications}
         options={{ tabBarBadge: 10 }}
       />
-      <Tab.Screen name={ROUTES.SETTINGS} component={Settings} />
+      <Tab.Screen
+        name={ROUTES.SETTINGS_NAVIGATOR}
+        component={SettingsNavigator}
+        options={{ tabBarLabel: "Settings" }}
+      />
     </Tab.Navigator>
   );
 }

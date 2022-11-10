@@ -9,6 +9,7 @@ import { ROUTES } from "../constants/routes";
 import { COLORS } from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import SettingsNavigator from "./SettingsNavigator";
+import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,9 @@ function BottomTabNavigator() {
       screenOptions={({ route }) => ({
         headerTitleAlign: "center",
         headerShown: false,
+        tabBarStyle: styles.tabBarStyle,
         tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: COLORS.dark,
         tabBarIcon: ({ color, size, focused }) => {
           let iconName;
           let Icon;
@@ -59,3 +62,13 @@ function BottomTabNavigator() {
 }
 
 export default BottomTabNavigator;
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    position: "absolute",
+    elevation: 0,
+    borderTopWidth: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20
+  }
+});
